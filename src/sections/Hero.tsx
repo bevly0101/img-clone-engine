@@ -1,18 +1,15 @@
 import { Button } from "@/components/ui/button";
 
 const Logo = () => (
-  <div className="flex items-center gap-2">
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden>
-      <defs>
-        <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="hsl(var(--brand))" />
-          <stop offset="100%" stopColor="hsl(var(--brand-2))" />
-        </linearGradient>
-      </defs>
-      <path d="M12 2l9 20H3L12 2z" fill="url(#g)" />
-    </svg>
-    <span className="font-bold text-lg tracking-tight">AutoFinance</span>
-  </div>
+  <img
+    src="/lovable-uploads/851f6320-cf7d-44af-a64f-4837d69bd9bd.png"
+    alt="AutoFinance logo"
+    width={180}
+    height={36}
+    className="h-8 md:h-9 w-auto"
+    loading="eager"
+    decoding="async"
+  />
 );
 
 const Hero = () => {

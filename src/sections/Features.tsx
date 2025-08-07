@@ -1,6 +1,6 @@
 
 const PlaceholderPhone = ({ src, alt }: { src: string; alt: string }) => (
-  <div className="aspect-[9/19] mx-auto max-w-[220px] md:max-w-[260px] w-full rounded-[2rem] bg-background/40 shadow-soft overflow-hidden">
+  <div className="aspect-[9/19] mx-auto max-w-[220px] md:max-w-[260px] w-full rounded-[2rem] overflow-hidden">
     <img src={src} alt={alt} loading="lazy" width={900} height={1900} className="h-full w-full object-cover" />
   </div>
 );
