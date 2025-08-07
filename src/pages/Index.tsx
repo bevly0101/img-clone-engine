@@ -1,13 +1,28 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Hero from "@/sections/Hero";
+import Features from "@/sections/Features";
+import MidCTA from "@/sections/MidCTA";
+import Footer from "@/sections/Footer";
 
 const Index = () => {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'AutoFinance',
+    applicationCategory: 'FinanceApplication',
+    operatingSystem: 'Web',
+    description:
+      'Assistente financeiro no WhatsApp: registre gastos por texto, áudio ou foto e receba análises inteligentes.',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'BRL' }
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <main className="min-h-screen bg-background text-foreground">
+      <Hero />
+      <Features />
+      <MidCTA />
+      <Footer />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+    </main>
   );
 };
 
