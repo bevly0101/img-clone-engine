@@ -1,10 +1,11 @@
-const PlaceholderPhone = () => (
-  <div className="aspect-[9/19] w-full rounded-[2rem] bg-background/40 ring-1 ring-border shadow-soft grid place-items-center text-sm text-muted-foreground">
-    Imagem do mockup pendente
+
+const PlaceholderPhone = ({ src, alt }: { src: string; alt: string }) => (
+  <div className="aspect-[9/19] w-full rounded-[2rem] bg-background/40 ring-1 ring-border shadow-soft overflow-hidden">
+    <img src={src} alt={alt} loading="lazy" width={900} height={1900} className="h-full w-full object-cover" />
   </div>
 );
 
-const Card = ({ title, desc, tone }: { title: string; desc: string; tone: "pink" | "indigo" | "purple" }) => {
+const Card = ({ title, desc, tone, img, alt }: { title: string; desc: string; tone: "pink" | "indigo" | "purple"; img: string; alt: string }) => {
   const toneClass = {
     pink: "bg-surface-pink",
     indigo: "bg-surface-indigo",
@@ -15,7 +16,7 @@ const Card = ({ title, desc, tone }: { title: string; desc: string; tone: "pink"
     <article className={`${toneClass} rounded-2xl p-6 md:p-8 text-foreground/95`}>
       <h3 className="text-xl font-semibold mb-2">{title}</h3>
       <p className="text-sm opacity-90 mb-6 max-w-prose">{desc}</p>
-      <PlaceholderPhone />
+      <PlaceholderPhone src={img} alt={alt} />
     </article>
   );
 };
@@ -35,16 +36,22 @@ const Features = () => {
           tone="pink"
           title="Como funciona?"
           desc="O AutoFinance é seu assistente financeiro digital. Registre despesas e entradas pelo WhatsApp ou painel. Simples. Rápido. Automatizado. Você fala, ele organiza."
+          img="/lovable-uploads/992d0a75-281f-482d-ad2c-f8e110cf8174.png"
+          alt="WhatsApp com AutoFinance registrando gastos por voz"
         />
         <Card
           tone="indigo"
           title="Mande fotos e áudios para anotar seus gastos."
           desc="Não quer digitar? Sem problemas. Envie a foto de um recibo ou fale por áudio – nós interpretamos e registramos tudo."
+          img="/lovable-uploads/3cfec948-bb3a-4256-bbef-c5840b55d842.png"
+          alt="Comprovante fotografado sendo interpretado no WhatsApp"
         />
         <Card
           tone="purple"
           title="Tenha resumos diários pelo WhatsApp e Painel"
           desc="Receba um resumo diário ou semanal com seu saldo, gastos e entradas. Tudo direto no WhatsApp."
+          img="/lovable-uploads/f5564d63-5264-4582-83d1-0b6351e6d9f1.png"
+          alt="Resumo financeiro enviado no WhatsApp pelo AutoFinance"
         />
       </div>
 
