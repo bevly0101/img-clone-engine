@@ -1,5 +1,6 @@
 import Hero from "@/sections/Hero";
 import Features from "@/sections/Features";
+import SimpleIntelligent from "@/sections/SimpleIntelligent";
 import MidCTA from "@/sections/MidCTA";
 import Footer from "@/sections/Footer";
 
@@ -19,6 +20,7 @@ const Index = () => {
     <main className="min-h-screen bg-background text-foreground">
       <Hero />
       <Features />
+      <SimpleIntelligent />
       <MidCTA />
       <Footer />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
