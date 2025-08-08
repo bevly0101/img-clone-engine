@@ -1,5 +1,6 @@
 
 import TestimonialsTicker from "@/sections/TestimonialsTicker";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const PlaceholderPhone = ({ src, alt, variant = "straight" }: { src: string; alt: string; variant?: "tilt-left" | "straight" | "tilt-right" }) => {
   const tiltClass = {
@@ -29,7 +30,7 @@ const Card = ({ title, desc, tone, img, alt, variant = "straight" }: { title: st
   }[tone];
 
   return (
-    <article className={`${toneClass} relative overflow-visible rounded-2xl p-6 md:p-8 text-foreground/95 h-full min-h-[420px] md:min-h-[520px] flex flex-col justify-between`}>
+    <article className={`${toneClass} relative overflow-hidden rounded-2xl p-6 md:p-8 text-foreground/95 h-full flex flex-col justify-between`}>
       <div className="max-w-prose">
         <h3 className="text-xl font-semibold mb-2">{title}</h3>
         <p className="text-sm opacity-90">{desc}</p>
@@ -40,7 +41,7 @@ const Card = ({ title, desc, tone, img, alt, variant = "straight" }: { title: st
 };
 
 const SmallFeature = ({ title, desc }: { title: string; desc: string }) => (
-  <article className="rounded-2xl p-5 bg-card/60 ring-1 ring-border">
+  <article className="rounded-2xl p-5 bg-card/60 ring-1 ring-border h-full">
     <h4 className="font-semibold mb-1">{title}</h4>
     <p className="text-sm text-muted-foreground">{desc}</p>
   </article>
@@ -49,39 +50,60 @@ const SmallFeature = ({ title, desc }: { title: string; desc: string }) => (
 const Features = () => {
   return (
     <section className="container pb-20">
-      <div className="grid gap-6 md:grid-cols-3">
-        <Card
-          tone="pink"
-          title="Como funciona?"
-          desc="O AutoFinance é seu assistente financeiro digital. Registre despesas e entradas pelo WhatsApp ou painel. Simples. Rápido. Automatizado. Você fala, ele organiza."
-          img="/lovable-uploads/a6b664e7-e257-4c27-ac5f-5e28024be117.png"
-          alt="WhatsApp com AutoFinance registrando gastos por voz (mockup inclinado à esquerda)"
-          variant="tilt-left"
-        />
-        <Card
-          tone="indigo"
-          title="Mande fotos e áudios para anotar seus gastos."
-          desc="Não quer digitar? Sem problemas. Envie a foto de um recibo ou fale por áudio – nós interpretamos e registramos tudo."
-          img="/lovable-uploads/e7d9f13f-80b7-40fc-a58e-e11be1a4d5c0.png"
-          alt="Comprovante fotografado sendo interpretado no WhatsApp (mockup frontal)"
-          variant="straight"
-        />
-        <Card
-          tone="purple"
-          title="Tenha resumos diários pelo WhatsApp e Painel"
-          desc="Receba um resumo diário ou semanal com seu saldo, gastos e entradas. Tudo direto no WhatsApp."
-          img="/lovable-uploads/5a6e3df2-491e-4fc6-9d77-875d11518a38.png"
-          alt="Resumo financeiro enviado no WhatsApp pelo AutoFinance (mockup inclinado à direita)"
-          variant="tilt-right"
-        />
+      <div className="grid gap-6 md:grid-cols-3 auto-rows-fr">
+        {/* Row 1: três cards altos com proporção fixa baseada na referência */}
+        <AspectRatio ratio={9 / 16}>
+          <div className="h-full">
+            <Card
+              tone="pink"
+              title="Como funciona?"
+              desc="O AutoFinance é seu assistente financeiro digital. Registre despesas e entradas pelo WhatsApp ou painel. Simples. Rápido. Automatizado. Você fala, ele organiza."
+              img="/lovable-uploads/a6b664e7-e257-4c27-ac5f-5e28024be117.png"
+              alt="WhatsApp com AutoFinance registrando gastos por voz (mockup inclinado à esquerda)"
+              variant="tilt-left"
+            />
+          </div>
+        </AspectRatio>
+        <AspectRatio ratio={9 / 16}>
+          <div className="h-full">
+            <Card
+              tone="indigo"
+              title="Mande fotos e áudios para anotar seus gastos."
+              desc="Não quer digitar? Sem problemas. Envie a foto de um recibo ou fale por áudio – nós interpretamos e registramos tudo."
+              img="/lovable-uploads/e7d9f13f-80b7-40fc-a58e-e11be1a4d5c0.png"
+              alt="Comprovante fotografado sendo interpretado no WhatsApp (mockup frontal)"
+              variant="straight"
+            />
+          </div>
+        </AspectRatio>
+        <AspectRatio ratio={9 / 16}>
+          <div className="h-full">
+            <Card
+              tone="purple"
+              title="Tenha resumos diários pelo WhatsApp e Painel"
+              desc="Receba um resumo diário ou semanal com seu saldo, gastos e entradas. Tudo direto no WhatsApp."
+              img="/lovable-uploads/5a6e3df2-491e-4fc6-9d77-875d11518a38.png"
+              alt="Resumo financeiro enviado no WhatsApp pelo AutoFinance (mockup inclinado à direita)"
+              variant="tilt-right"
+            />
+          </div>
+        </AspectRatio>
+
+        {/* Row 2: duas barras baixas sob as duas primeiras colunas */}
+        <AspectRatio ratio={7 / 2} className="hidden md:block">
+          <div className="h-full">
+            <SmallFeature title="Total privacidade." desc="Seus dados são só seus. Tudo criptografado e seguro – sem compartilhamento ou publicidade." />
+          </div>
+        </AspectRatio>
+        <AspectRatio ratio={7 / 2} className="hidden md:block">
+          <div className="h-full">
+            <SmallFeature title="Gráficos interativos" desc="Visualize seus gastos com clareza. Compare meses, entenda padrões e tome decisões melhores." />
+          </div>
+        </AspectRatio>
+        <div className="hidden md:block" />
       </div>
 
       <TestimonialsTicker />
-
-      <div className="mt-6 grid gap-6 md:grid-cols-2">
-        <SmallFeature title="Total privacidade." desc="Seus dados são só seus. Tudo criptografado e seguro – sem compartilhamento ou publicidade." />
-        <SmallFeature title="Gráficos interativos" desc="Visualize seus gastos com clareza. Compare meses, entenda padrões e tome decisões melhores." />
-      </div>
     </section>
   );
 };
