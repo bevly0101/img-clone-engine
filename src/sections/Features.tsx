@@ -1,4 +1,6 @@
 
+import TestimonialsTicker from "@/sections/TestimonialsTicker";
+
 const PlaceholderPhone = ({ src, alt, variant = "straight" }: { src: string; alt: string; variant?: "tilt-left" | "straight" | "tilt-right" }) => {
   const tiltClass = {
     "tilt-left": "-rotate-12 origin-bottom-left",
@@ -73,6 +75,8 @@ const Features = () => {
           variant="tilt-right"
         />
       </div>
+
+      <TestimonialsTicker />
 
       <div className="mt-6 grid gap-6 md:grid-cols-2">
         <SmallFeature title="Total privacidade." desc="Seus dados são só seus. Tudo criptografado e seguro – sem compartilhamento ou publicidade." />

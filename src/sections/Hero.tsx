@@ -16,8 +16,13 @@ const Hero = () => {
   return (
     <header className="relative overflow-hidden">
       <div className="pointer-events-none absolute inset-0 bg-glow-radial" aria-hidden />
-      <nav className="container flex items-center justify-start py-6">
+      <nav className="container flex items-center justify-between py-6">
         <a href="#" className="story-link"><Logo /></a>
+        <div className="flex items-center gap-6 text-sm text-muted-foreground">
+          <a href="#planos" className="hover-scale">Planos</a>
+          <a href="#login" className="hover-scale">Login</a>
+          <Button variant="hero" size="lg" className="rounded-full">cadastre-se</Button>
+        </div>
       </nav>
 
       <section className="container pt-8 pb-16 text-center">
