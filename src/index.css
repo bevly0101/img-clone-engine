@@ -112,3 +112,21 @@ All colors MUST be HSL.
     @apply bg-background text-foreground font-sans;
   }
 }
+
+@layer components {
+  /* Features section layout adjustments */
+  section.container.pb-20 > [class*="md:grid-cols-3"] > article {
+    @apply h-full min-h-[560px] md:min-h-[600px] flex flex-col justify-between overflow-visible;
+  }
+  section.container.pb-20 > [class*="md:grid-cols-3"] > article figure {
+    @apply mt-6 -mb-12 md:-mb-16;
+  }
+
+  /* Small features containers */
+  section.container.pb-20 > [class*="md:grid-cols-2"] > article {
+    @apply rounded-2xl p-6 md:p-7 bg-card ring-1 ring-border/50 shadow-soft;
+  }
+  section.container.pb-20 > [class*="md:grid-cols-2"] > article:nth-child(2) {
+    @apply bg-surface-indigo;
+  }
+}
