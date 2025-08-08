@@ -23,6 +23,7 @@ const Index = () => {
       <SimpleIntelligent />
       <MidCTA />
       <Footer />
+      <link rel="canonical" href="/" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     </main>
   );

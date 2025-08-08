@@ -1,11 +1,25 @@
 
-const PlaceholderPhone = ({ src, alt }: { src: string; alt: string }) => (
-  <div className="aspect-[9/19] mx-auto max-w-[220px] md:max-w-[260px] w-full rounded-[2rem] overflow-hidden">
-    <img src={src} alt={alt} loading="lazy" width={900} height={1900} className="h-full w-full object-cover" />
-  </div>
-);
+const PlaceholderPhone = ({ src, alt, variant = "straight" }: { src: string; alt: string; variant?: "tilt-left" | "straight" | "tilt-right" }) => {
+  const tiltClass = {
+    "tilt-left": "-rotate-12 origin-bottom-left",
+    "straight": "",
+    "tilt-right": "rotate-12 origin-bottom-right",
+  }[variant];
+  return (
+    <figure className="pointer-events-none select-none relative -mb-10 mt-4">
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        width={900}
+        height={1900}
+        className={`mx-auto max-h-72 md:max-h-80 w-auto object-contain drop-shadow-2xl ${tiltClass}`}
+      />
+    </figure>
+  );
+};
 
-const Card = ({ title, desc, tone, img, alt }: { title: string; desc: string; tone: "pink" | "indigo" | "purple"; img: string; alt: string }) => {
+const Card = ({ title, desc, tone, img, alt, variant = "straight" }: { title: string; desc: string; tone: "pink" | "indigo" | "purple"; img: string; alt: string; variant?: "tilt-left" | "straight" | "tilt-right" }) => {
   const toneClass = {
     pink: "bg-surface-pink",
     indigo: "bg-surface-indigo",
@@ -13,10 +27,12 @@ const Card = ({ title, desc, tone, img, alt }: { title: string; desc: string; to
   }[tone];
 
   return (
-    <article className={`${toneClass} rounded-2xl p-6 md:p-8 text-foreground/95`}>
-      <h3 className="text-xl font-semibold mb-2">{title}</h3>
-      <p className="text-sm opacity-90 mb-6 max-w-prose">{desc}</p>
-      <PlaceholderPhone src={img} alt={alt} />
+    <article className={`${toneClass} relative overflow-visible rounded-2xl p-6 md:p-8 text-foreground/95 h-full min-h-[420px] md:min-h-[520px] flex flex-col justify-between`}>
+      <div className="max-w-prose">
+        <h3 className="text-xl font-semibold mb-2">{title}</h3>
+        <p className="text-sm opacity-90">{desc}</p>
+      </div>
+      <PlaceholderPhone src={img} alt={alt} variant={variant} />
     </article>
   );
 };
@@ -36,22 +52,25 @@ const Features = () => {
           tone="pink"
           title="Como funciona?"
           desc="O AutoFinance é seu assistente financeiro digital. Registre despesas e entradas pelo WhatsApp ou painel. Simples. Rápido. Automatizado. Você fala, ele organiza."
-          img="/lovable-uploads/992d0a75-281f-482d-ad2c-f8e110cf8174.png"
-          alt="WhatsApp com AutoFinance registrando gastos por voz"
+          img="/lovable-uploads/a6b664e7-e257-4c27-ac5f-5e28024be117.png"
+          alt="WhatsApp com AutoFinance registrando gastos por voz (mockup inclinado à esquerda)"
+          variant="tilt-left"
         />
         <Card
           tone="indigo"
           title="Mande fotos e áudios para anotar seus gastos."
           desc="Não quer digitar? Sem problemas. Envie a foto de um recibo ou fale por áudio – nós interpretamos e registramos tudo."
-          img="/lovable-uploads/3cfec948-bb3a-4256-bbef-c5840b55d842.png"
-          alt="Comprovante fotografado sendo interpretado no WhatsApp"
+          img="/lovable-uploads/e7d9f13f-80b7-40fc-a58e-e11be1a4d5c0.png"
+          alt="Comprovante fotografado sendo interpretado no WhatsApp (mockup frontal)"
+          variant="straight"
         />
         <Card
           tone="purple"
           title="Tenha resumos diários pelo WhatsApp e Painel"
           desc="Receba um resumo diário ou semanal com seu saldo, gastos e entradas. Tudo direto no WhatsApp."
-          img="/lovable-uploads/f5564d63-5264-4582-83d1-0b6351e6d9f1.png"
-          alt="Resumo financeiro enviado no WhatsApp pelo AutoFinance"
+          img="/lovable-uploads/5a6e3df2-491e-4fc6-9d77-875d11518a38.png"
+          alt="Resumo financeiro enviado no WhatsApp pelo AutoFinance (mockup inclinado à direita)"
+          variant="tilt-right"
         />
       </div>
 
