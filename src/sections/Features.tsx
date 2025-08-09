@@ -1,4 +1,3 @@
-
 import TestimonialsTicker from "@/sections/TestimonialsTicker";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import LayoutAuditOverlay from "@/components/dev/LayoutAuditOverlay";
@@ -52,7 +51,7 @@ const Features = () => {
   return (
     <section className="container pb-20">
       <div className="grid gap-6 md:grid-cols-3 auto-rows-fr">
-        {/* Row 1: três cards altos com proporção fixa baseada na referência */}
+        {/* Row 1: três cards altos com proporções diferentes - roxo mais alto */}
         <AspectRatio ratio={9 / 16}>
           <div className="h-full" data-audit="card-1">
             <Card
@@ -77,7 +76,8 @@ const Features = () => {
             />
           </div>
         </AspectRatio>
-        <AspectRatio ratio={9 / 16}>
+        {/* Card roxo com altura maior */}
+        <AspectRatio ratio={9 / 20}>
           <div className="h-full" data-audit="card-3">
             <Card
               tone="purple"
@@ -90,13 +90,13 @@ const Features = () => {
           </div>
         </AspectRatio>
 
-        {/* Row 2: duas barras baixas sob as duas primeiras colunas */}
-        <AspectRatio ratio={7 / 2} className="hidden md:block">
+        {/* Row 2: duas barras baixas menores sob as duas primeiras colunas */}
+        <AspectRatio ratio={7 / 1.5} className="hidden md:block">
           <div className="h-full" data-audit="bar-1">
             <SmallFeature title="Total privacidade." desc="Seus dados são só seus. Tudo criptografado e seguro – sem compartilhamento ou publicidade." />
           </div>
         </AspectRatio>
-        <AspectRatio ratio={7 / 2} className="hidden md:block">
+        <AspectRatio ratio={7 / 1.5} className="hidden md:block">
           <div className="h-full" data-audit="bar-2">
             <SmallFeature title="Gráficos interativos" desc="Visualize seus gastos com clareza. Compare meses, entenda padrões e tome decisões melhores." />
           </div>
