@@ -1,6 +1,7 @@
 
 import TestimonialsTicker from "@/sections/TestimonialsTicker";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import LayoutAuditOverlay from "@/components/dev/LayoutAuditOverlay";
 
 const PlaceholderPhone = ({ src, alt, variant = "straight" }: { src: string; alt: string; variant?: "tilt-left" | "straight" | "tilt-right" }) => {
   const tiltClass = {
@@ -30,7 +31,7 @@ const Card = ({ title, desc, tone, img, alt, variant = "straight" }: { title: st
   }[tone];
 
   return (
-    <article className={`${toneClass} relative overflow-hidden rounded-2xl p-6 md:p-8 text-foreground/95 h-full flex flex-col justify-between`}>
+    <article className={`${toneClass} relative rounded-3xl p-6 md:p-8 text-foreground/95 h-full flex flex-col justify-between`}>
       <div className="max-w-prose">
         <h3 className="text-xl font-semibold mb-2">{title}</h3>
         <p className="text-sm opacity-90">{desc}</p>
@@ -41,7 +42,7 @@ const Card = ({ title, desc, tone, img, alt, variant = "straight" }: { title: st
 };
 
 const SmallFeature = ({ title, desc }: { title: string; desc: string }) => (
-  <article className="rounded-2xl p-5 bg-card/60 ring-1 ring-border h-full">
+  <article className="rounded-3xl p-5 bg-card/60 ring-1 ring-border h-full">
     <h4 className="font-semibold mb-1">{title}</h4>
     <p className="text-sm text-muted-foreground">{desc}</p>
   </article>
@@ -53,7 +54,7 @@ const Features = () => {
       <div className="grid gap-6 md:grid-cols-3 auto-rows-fr">
         {/* Row 1: três cards altos com proporção fixa baseada na referência */}
         <AspectRatio ratio={9 / 16}>
-          <div className="h-full">
+          <div className="h-full" data-audit="card-1">
             <Card
               tone="pink"
               title="Como funciona?"
@@ -65,7 +66,7 @@ const Features = () => {
           </div>
         </AspectRatio>
         <AspectRatio ratio={9 / 16}>
-          <div className="h-full">
+          <div className="h-full" data-audit="card-2">
             <Card
               tone="indigo"
               title="Mande fotos e áudios para anotar seus gastos."
@@ -77,7 +78,7 @@ const Features = () => {
           </div>
         </AspectRatio>
         <AspectRatio ratio={9 / 16}>
-          <div className="h-full">
+          <div className="h-full" data-audit="card-3">
             <Card
               tone="purple"
               title="Tenha resumos diários pelo WhatsApp e Painel"
@@ -91,17 +92,19 @@ const Features = () => {
 
         {/* Row 2: duas barras baixas sob as duas primeiras colunas */}
         <AspectRatio ratio={7 / 2} className="hidden md:block">
-          <div className="h-full">
+          <div className="h-full" data-audit="bar-1">
             <SmallFeature title="Total privacidade." desc="Seus dados são só seus. Tudo criptografado e seguro – sem compartilhamento ou publicidade." />
           </div>
         </AspectRatio>
         <AspectRatio ratio={7 / 2} className="hidden md:block">
-          <div className="h-full">
+          <div className="h-full" data-audit="bar-2">
             <SmallFeature title="Gráficos interativos" desc="Visualize seus gastos com clareza. Compare meses, entenda padrões e tome decisões melhores." />
           </div>
         </AspectRatio>
         <div className="hidden md:block" />
       </div>
+
+      <LayoutAuditOverlay maskUrl="/lovable-uploads/08ba5a89-7c21-437b-acf3-0b31440fbd20.png" />
 
       <TestimonialsTicker />
     </section>
