@@ -21,8 +21,15 @@ const Card = ({
     dark: "bg-card",
   }[tone];
 
+  const sizeClass = {
+    pink: "min-h-[320px] md:min-h-[440px]",
+    lilac: "min-h-[320px] md:min-h-[440px]",
+    purple: "min-h-[360px] md:min-h-[520px]",
+    dark: "min-h-[280px] md:min-h-[340px]",
+  }[tone];
+
   return (
-    <article className={`${toneClass} relative overflow-hidden rounded-2xl p-6 md:p-8 text-foreground/95`}>
+    <article className={`${toneClass} ${sizeClass} relative overflow-hidden rounded-2xl p-6 md:p-8 text-foreground/95`}>
       <div className="max-w-prose">
         <h3 className="text-lg md:text-xl font-semibold mb-2">{title}</h3>
         <p className="text-sm md:text-base opacity-90 leading-relaxed">{desc}</p>
