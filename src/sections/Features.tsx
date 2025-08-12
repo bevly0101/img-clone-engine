@@ -44,7 +44,7 @@ const Card = ({
             loading="lazy"
             width={900}
             height={1900}
-            className="hidden md:block absolute bottom-0 right-0 w-1/2 max-h-[80%] object-contain pointer-events-none select-none drop-shadow-2xl"
+            className="hidden md:block absolute bottom-2 right-2 w-[68%] max-h-[85%] object-contain pointer-events-none select-none drop-shadow-2xl"
           />
           {/* Versão mobile: mockup abaixo do texto */}
           <img
